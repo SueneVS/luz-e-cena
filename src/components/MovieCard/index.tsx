@@ -15,7 +15,7 @@ interface CardMovieProps {
   duration: number;
 }
 
-const CardMovie = (props: CardMovieProps) => {
+const MovieCard = (props: CardMovieProps) => {
   const { alt, src, title, genre, category, censorship, duration } = props;
   return (
     <li className={styles.card}>
@@ -37,4 +37,4 @@ const CardMovie = (props: CardMovieProps) => {
   );
 };
 
-export default CardMovie;
+export default MovieCard;
