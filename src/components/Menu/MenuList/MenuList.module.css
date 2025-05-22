@@ -1,0 +1,20 @@
+.nav {
+    display: flex;
+    gap: var(--gap-xl);
+    font-family: var(--fonte-texto);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+}
+
+.nav {
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav li {
+    list-style: none;
+}
+
+.nav li a {
+    display: block;
+}
