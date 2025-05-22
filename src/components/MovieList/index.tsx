@@ -1,20 +1,6 @@
 import styles from "./MovieList.module.css";
 import MovieCard from "../MovieCard";
-
-type Category = "2D" | "3D";
-
-type Censorship = "Livre" | "10 anos" | "12 anos" | "14 anos" | "16 anos";
-
-interface Movie {
-  id: number;
-  src: string;
-  alt: string;
-  title: string;
-  category: Category;
-  censorship: Censorship;
-  genre: string;
-  duration: number;
-}
+import type { Movie } from "../../Types";
 
 interface MovieListProps {
   movies: Movie[];
