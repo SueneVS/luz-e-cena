@@ -12,3 +12,7 @@
     font-size: var(--font-size-xl);
     align-self: flex-start;
 }
+
+.error{
+    color: var(--vermelho);
+}

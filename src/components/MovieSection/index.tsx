@@ -4,103 +4,37 @@ import InputText from "../InputText";
 import Button from "../Button";
 import { FaSearch } from "react-icons/fa";
 import MovieList from "../MovieList";
-import type { Movie } from "../../Types";
-
-const movies: Movie[] = [
-  {
-    id: 1,
-    src: "./img/cards-filmes/amigo_da_sombra.png",
-    alt: "Imagem do filme Amigo da sombra",
-    title: "Amigo da sombra",
-    category: "2D",
-    censorship: "12 anos",
-    genre: "Suspense",
-    duration: 110,
-  },
-  {
-    id: 2,
-    src: "./img/cards-filmes/amigos_do_bosque_magico.png",
-    alt: "Imagem do filme Amigo do bosque mágico",
-    title: "Amigo do bosque mágico",
-    category: "2D",
-    censorship: "Livre",
-    genre: "Animação",
-    duration: 60,
-  },
-  {
-    id: 3,
-    src: "./img/cards-filmes/caminho_para_o_abismo.png",
-    alt: "Imagem do filme Caminho para o abismo",
-    title: "Caminho para o abismo",
-    category: "2D",
-    censorship: "14 anos",
-    genre: "Horror",
-    duration: 103,
-  },
-  {
-    id: 4,
-    src: "./img/cards-filmes/desastres_do_escritorio.png",
-    alt: "Imagem do filme Desastres do Escritório",
-    title: "Desastres do Escritório",
-    category: "2D",
-    censorship: "Livre",
-    genre: "Comédia",
-    duration: 85,
-  },
-  {
-    id: 5,
-    src: "./img/cards-filmes/mestres_do_futuro.png",
-    alt: "Imagem do filme Mestres do Futuro",
-    title: "Mestres do Futuro",
-    category: "2D",
-    censorship: "Livre",
-    genre: "Documentário",
-    duration: 120,
-  },
-  {
-    id: 6,
-    src: "./img/cards-filmes/la_Esperanza.png",
-    alt: "Imagem do filme La Esperanza",
-    title: "La Esperanza",
-    category: "2D",
-    censorship: "12 anos",
-    genre: "Drama",
-    duration: 98,
-  },
-  {
-    id: 7,
-    src: "./img/cards-filmes/o_nexus_do_tempo.png",
-    alt: "Imagem do filme O nexus do tempo",
-    title: "O nexus do tempo",
-    category: "3D",
-    censorship: "10 anos",
-    genre: "Ficcção Científica",
-    duration: 105,
-  },
-  {
-    id: 8,
-    src: "./img/cards-filmes/amigos_do_bosque_magico.png",
-    alt: "Imagem do filme Amigo do bosque mágico",
-    title: "Amigo do bosque mágico",
-    category: "3D",
-    censorship: "Livre",
-    genre: "Animação",
-    duration: 60,
-  },
-];
+import useFetchMovies from "../../Hooks/useFetchMovies";
+import useFilterMovies from "../../Hooks/useFilterMovies";
 
 const MovieSection = () => {
+  const { movies, error, isLoading } = useFetchMovies();
+  const { search, setSearch, filteredMovies, handleSearch } =
+    useFilterMovies(movies);
   return (
     <main>
       <section className={styles.container}>
         <Fieldset variant="secondary">
-          <InputText placeholder="Buscar filmes..." />
-          <Button variant="icon">
+          <InputText
+            value={search}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              setSearch(event.target.value)
+            }
+            placeholder="Buscar filmes..."
+          />
+          <Button variant="icon" onClick={handleSearch}>
             <FaSearch />
           </Button>
         </Fieldset>
-        <h1 className="styles.title">Em cartaz</h1>
-        <MovieList movies={movies}></MovieList>
+        <h1 className={styles.title}>Em cartaz</h1>
+        {error && <div className={styles.error}>{error}</div>}
+        {isLoading ? (
+          <div className={styles.loading}>Carregando...</div>
+        ) : filteredMovies.length === 0 ? (
+          <div className={styles.error}>Filme não disponível</div>
+        ) : (
+          <MovieList movies={filteredMovies} />
+        )}
       </section>
     </main>
   );
