@@ -18,4 +18,5 @@ O projeto foi realizado como parte do desenvolvimento das habilidades técnicas,
 - React Icons
 - JSON Server
 
-<video controls src="Gravação de Tela 2025-05-22 175237.mp4" title="Luz e Cena"></video>
+
+![Tela-Luz-e-Cena](https://github.com/user-attachments/assets/04defa7e-e8e9-43f2-966e-36a02468bc85)
