@@ -99,7 +99,7 @@ const MovieSection = () => {
             <FaSearch />
           </Button>
         </Fieldset>
-        <h1 className="styles.title">Em cartaz</h1>
+        <h1 className={styles.title}>Em cartaz</h1>
         <MovieList movies={movies}></MovieList>
       </section>
     </main>
