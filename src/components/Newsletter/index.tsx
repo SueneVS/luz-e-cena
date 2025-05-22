@@ -9,7 +9,7 @@ const Newsletter = () => {
       <h2 className={styles.title}>Inscreva-se para ganhar descontos!</h2>
       <form className={styles.form}>
         <Fieldset>
-          <InputText placeholder="Digite o seu melhor email" />
+          <InputText placeholder="Digite o seu email" />
         </Fieldset>
         <Button variant="default" type="submit">
           Inscreva-se
